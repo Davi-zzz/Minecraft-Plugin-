@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BadIsekai:jar">
+    <output-path>$USER_HOME$/Desktop/server teste/plugins</output-path>
+    <root id="archive" name="BadIsekai.jar">
+      <element id="module-output" name="BadIsekai" />
+    </root>
+  </artifact>
+</component>
