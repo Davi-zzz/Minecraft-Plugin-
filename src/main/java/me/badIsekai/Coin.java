@@ -2,6 +2,8 @@ package me.badIsekai;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -47,5 +49,24 @@ public class Coin {
         String desc = (ChatColor.BLUE + "" + ChatColor.ITALIC + "Uma moeda valiosa, pode ser usada para trocas (100 moedas de prata virarão 1 de ouro)");
 
         return makingCoin(m, name, desc, amount);
+    }
+    public void autoAdjust(Player p){
+        //BUSCANDO PELO ITEM NO INVENTARIO DA ENTITY
+        for (int i = 0; i != p.getInventory().getSize(); i++) {
+            p.getInventory().getItem(i);
+
+            if (p.getInventory().getItem(i) != null) {
+                System.out.println("entrou no diferente de null");
+                if (p.getInventory().getItem(i).getItemMeta().getDisplayName().equals(ChatColor.GRAY + "" + "MOEDA DE PRATA")) {
+                    System.out.println("entrou no eh moeda de prata");
+                    if (p.getInventory().getItem(i).getAmount() > 10) {
+                        p.getInventory().addItem(goldCoin(1));
+                        p.getInventory().removeItem(silverCoin(10));
+                        System.out.println("tentou remover");
+                    }
+                }
+            }
+
+        }
     }
 }

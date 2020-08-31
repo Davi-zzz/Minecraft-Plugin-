@@ -17,15 +17,21 @@ public class CoinListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player p = event.getPlayer();
         Bukkit.getConsoleSender().sendMessage("um player entrou");
+        Coin coin = new Coin();
+
 
         for(int i = 0; i < 2 ; i++) {
 
-            ItemStack item = new Coin().goldCoin(1);
-            ItemStack item2 = new Coin().silverCoin(1);
+//            ItemStack item = new Coin().goldCoin(1);
+            ItemStack item2 = new Coin().silverCoin(11);
 
-            p.getInventory().addItem(item);
+//            p.getInventory().addItem(item);
             p.getInventory().addItem(item2);
+            coin.autoAdjust(p);
+
+
         }
+
 
     }
 }
