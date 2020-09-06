@@ -53,16 +53,15 @@ public class Coin {
     public void autoAdjust(Player p){
         //BUSCANDO PELO ITEM NO INVENTARIO DA ENTITY
         for (int i = 0; i != p.getInventory().getSize(); i++) {
-            p.getInventory().getItem(i);
-
             if (p.getInventory().getItem(i) != null) {
                 System.out.println("entrou no diferente de null");
                 if (p.getInventory().getItem(i).getItemMeta().getDisplayName().equals(ChatColor.GRAY + "" + "MOEDA DE PRATA")) {
                     System.out.println("entrou no eh moeda de prata");
-                    if (p.getInventory().getItem(i).getAmount() > 10) {
+                    if (p.getInventory().getItem(i).getAmount() == 64) {
+                        System.out.println("ENTROU NO == 64");
+                        p.getInventory().removeItem(silverCoin(64));
                         p.getInventory().addItem(goldCoin(1));
-                        p.getInventory().removeItem(silverCoin(10));
-                        System.out.println("tentou remover");
+
                     }
                 }
             }
