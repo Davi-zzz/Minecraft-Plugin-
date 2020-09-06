@@ -20,17 +20,16 @@ public class CoinListener implements Listener {
         Coin coin = new Coin();
 
 
-        for(int i = 0; i < 2 ; i++) {
 
-//            ItemStack item = new Coin().goldCoin(1);
-            ItemStack item2 = new Coin().silverCoin(11);
 
-//            p.getInventory().addItem(item);
+            ItemStack item = new Coin().goldCoin(20);
+            ItemStack item2 = new Coin().silverCoin(64);
+
+            p.getInventory().addItem(item);
             p.getInventory().addItem(item2);
             coin.autoAdjust(p);
 
 
-        }
 
 
     }
