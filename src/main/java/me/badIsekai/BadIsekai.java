@@ -22,6 +22,7 @@ public class BadIsekai extends JavaPlugin implements Listener {
 
         PluginManager pm = getServer().getPluginManager();
         CoinListener cl = new CoinListener(this);
+        Trade trade = new Trade();
         pm.registerEvents(cl, this);
     }
 

@@ -3,7 +3,6 @@ package me.badIsekai;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -46,26 +45,21 @@ public class Coin {
     public ItemStack silverCoin(int amount){
         Material m = Material.IRON_NUGGET;
         String name = (ChatColor.GRAY + "" + "MOEDA DE PRATA");
-        String desc = (ChatColor.BLUE + "" + ChatColor.ITALIC + "Uma moeda valiosa, pode ser usada para trocas (100 moedas de prata virarão 1 de ouro)");
+        String desc = (ChatColor.BLUE + "" + ChatColor.ITALIC + "Uma moeda valiosa, pode ser usada para trocas");
 
         return makingCoin(m, name, desc, amount);
     }
-    public void autoAdjust(Player p){
+    public void autoAdjust(Player p) {
         //BUSCANDO PELO ITEM NO INVENTARIO DA ENTITY
         for (int i = 0; i != p.getInventory().getSize(); i++) {
             if (p.getInventory().getItem(i) != null) {
-                System.out.println("entrou no diferente de null");
-                if (p.getInventory().getItem(i).getItemMeta().getDisplayName().equals(ChatColor.GRAY + "" + "MOEDA DE PRATA")) {
-                    System.out.println("entrou no eh moeda de prata");
-                    if (p.getInventory().getItem(i).getAmount() == 64) {
-                        System.out.println("ENTROU NO == 64");
-                        p.getInventory().removeItem(silverCoin(64));
-                        p.getInventory().addItem(goldCoin(1));
-
-                    }
-                }
+                String x = ChatColor.GRAY + "" + "MOEDA DE PRATA";
+                if (p.getInventory().getItem(i).getItemMeta().hasDisplayName() && p.getInventory().getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase(x))
+                       if(p.getInventory().getItem(i).getAmount() == 64) {
+                           p.getInventory().removeItem(silverCoin(64));
+                           p.getInventory().addItem(goldCoin(1));
+                       }
             }
-
         }
     }
 }
