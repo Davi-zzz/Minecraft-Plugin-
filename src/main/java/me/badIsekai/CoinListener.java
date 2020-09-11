@@ -1,6 +1,7 @@
 package me.badIsekai;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,8 +30,7 @@ public class CoinListener implements Listener {
         p.getInventory().addItem(item2);
         coin.autoAdjust(p);
         Trade trade = new Trade();
-        trade.teste(p);
-        trade.traderVillager();
+        trade.traderVillager(p.getServer());
 
     }
 
@@ -38,7 +38,9 @@ public class CoinListener implements Listener {
 //    public void PlayerInteractEvent(PlayerInteractEvent event) {
 //        Player p = event.getPlayer();
 //        if (event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
-//
+//            Trade trade = new Trade();
+//            trade.teste(p);
+//            trade.traderVillager();
 //        }
 //
 //    }

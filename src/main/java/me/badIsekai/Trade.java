@@ -13,16 +13,6 @@ public class Trade implements Listener {
     public Trade (){
 
     }
-
-
-    public Server teste(Player p ){
-
-        p.getLocation();
-//        p.getWorld().getBlockAt(p.getLocation().getBlockX()+1, p.getLocation().getBlockY(), p.getLocation().getBlock();
-        return Bukkit.getServer();
-
-    }
-
 //    public ItemStack bau(Material m, String name, String desc, int amount){
 //
 //        ItemStack item = new ItemStack(m, amount);
@@ -54,26 +44,42 @@ public class Trade implements Listener {
 //        return bau(m, name, desc, amount);
 //    }
 
-    public void traderVillager(){
-        Server server = Bukkit.getServer();
+    public Server traderVillager(Server server){
 //        ArrayList<Entity> entidades = server.getWorld(server.getServerId()).getEntitiesByClasses(ArrayList<Entity> Villager);
+
             List<LivingEntity> entidades = Bukkit.getWorld("world").getLivingEntities();
 
             mayorGenerator(entidades, server);
-            Bukkit.getConsoleSender().sendMessage(entidades.get(0).getName());
+
+            return server;
+
+
     }
 
 
-    public List<LivingEntity> mayorGenerator(List<LivingEntity> a, Server s){
+    public Server mayorGenerator(List<LivingEntity> a, Server s){
         List<LivingEntity> aux = new ArrayList<LivingEntity>();
-        for (int i = 0; i != a.size(); i++){
-            addEntity(a,aux);
-            Bukkit.getConsoleSender().sendMessage(ChatColor.RED+"TENTOU ADD ENTITY");
-            Bukkit.getWorld(s.getServerId()).spawnEntity(a.get(i).getLocation(), EntityType.VILLAGER);
+        addEntity(a,aux);
+        for (int i = 0; i != aux.size(); i++){
 
-            Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA+ "MAYOR GERADO EM "+a.get(i).getLocation());
+            //para cada volta no for vai spawnar um prefeito em cada cidade
+
+            Bukkit.getConsoleSender().sendMessage(ChatColor.RED+"TENTOU ADD ENTITY");
+            Villager mayor = (Villager) s.getWorld("world").spawnEntity(aux.get(i).getLocation().add(1,0,-1), EntityType.VILLAGER);
+            mayor.setCustomName("MICAEL");
+            mayor.setCustomNameVisible(true);
+
+            //dont work
+//            Bukkit.getWorld(s.getServerId()).spawnEntity(a.get(i).getLocation(), EntityType.VILLAGER);
+
+            //tentando spawnar a porra do npc
+            //tentar pegar os populators e gerar atraves deles
+
+
+
+            Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA+ "MAYOR GERADO EM "+aux.get(i).getLocation());
         }
-        return a;
+        return s;
     }
     public void addEntity (List<LivingEntity> b, List<LivingEntity> c) {
 
