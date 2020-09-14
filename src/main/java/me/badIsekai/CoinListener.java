@@ -2,13 +2,19 @@ package me.badIsekai;
 
 import org.bukkit.Bukkit;
 
+import org.bukkit.ChatColor;
+import org.bukkit.Chunk;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.world.ChunkLoadEvent;
+import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.io.BukkitObjectInputStream;
 
-public class CoinListener implements Listener {
+public class CoinListener extends Trade implements Listener {
 
     public CoinListener(BadIsekai plugin) {
 
@@ -30,6 +36,18 @@ public class CoinListener implements Listener {
 
 
     }
+    @EventHandler
+    public void onChunckLoadEvent(ChunkLoadEvent event, Trade tr){
+
+        if(event.isNewChunk()){
+
+            tr.traderVillager(Bukkit.getServer());
+
+
+
+        }
+    }
+
 
 
 

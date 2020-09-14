@@ -63,7 +63,7 @@ public class Trade implements Listener {
 
             mayor.setCustomName("PREFEITO");
             mayor.setCustomNameVisible(true);
-            mayor.getInventory();
+
 
             Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA+ "MAYOR GERADO EM "+aux.get(i).getLocation());
         }
