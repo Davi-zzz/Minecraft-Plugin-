@@ -2,17 +2,13 @@ package me.badIsekai;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 
 
 import java.util.*;
 
 
 public class Trade implements Listener {
-
-
-    public Trade (){
-
-    }
 //    public ItemStack bau(Material m, String name, String desc, int amount){
 //
 //        ItemStack item = new ItemStack(m, amount);
@@ -45,15 +41,12 @@ public class Trade implements Listener {
 //    }
 
     public Server traderVillager(Server server){
-//        ArrayList<Entity> entidades = server.getWorld(server.getServerId()).getEntitiesByClasses(ArrayList<Entity> Villager);
 
             List<LivingEntity> entidades = Bukkit.getWorld("world").getLivingEntities();
 
             mayorGenerator(entidades, server);
 
             return server;
-
-
     }
 
 
@@ -65,17 +58,12 @@ public class Trade implements Listener {
             //para cada volta no for vai spawnar um prefeito em cada cidade
 
             Bukkit.getConsoleSender().sendMessage(ChatColor.RED+"TENTOU ADD ENTITY");
+
             Villager mayor = (Villager) s.getWorld("world").spawnEntity(aux.get(i).getLocation().add(1,0,-1), EntityType.VILLAGER);
-            mayor.setCustomName("MICAEL");
+
+            mayor.setCustomName("PREFEITO");
             mayor.setCustomNameVisible(true);
-
-            //dont work
-//            Bukkit.getWorld(s.getServerId()).spawnEntity(a.get(i).getLocation(), EntityType.VILLAGER);
-
-            //tentando spawnar a porra do npc
-            //tentar pegar os populators e gerar atraves deles
-
-
+            mayor.getInventory();
 
             Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA+ "MAYOR GERADO EM "+aux.get(i).getLocation());
         }

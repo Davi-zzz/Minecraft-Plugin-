@@ -2,6 +2,7 @@ package me.badIsekai;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,8 +23,9 @@ public class BadIsekai extends JavaPlugin implements Listener {
 
         PluginManager pm = getServer().getPluginManager();
         CoinListener cl = new CoinListener(this);
-        Trade trade = new Trade();
+        TradeListener tr = new TradeListener(this);
         pm.registerEvents(cl, this);
+
     }
 
     public void onDisable() {
