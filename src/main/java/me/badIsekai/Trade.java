@@ -9,6 +9,10 @@ import java.util.*;
 
 
 public class Trade implements Listener {
+
+    public Trade(){
+
+    }
 //    public ItemStack bau(Material m, String name, String desc, int amount){
 //
 //        ItemStack item = new ItemStack(m, amount);
@@ -81,8 +85,6 @@ public class Trade implements Listener {
                             c.add(b.get(i));
                         }
                     }
-                } else {
-                    c.add(b.get(i));
                 }
 
 
